@@ -5,22 +5,21 @@ const Schema = mongoose.Schema
 const expenseSchema = new Schema({
   name: {
     type: String,
-    required: true
   },
   category: {
     type: String,
-    required: true
   },
   date: {
-    type: Date,
-    required: true
+    type: String,
   },
   amount: {
     type: Number,
-    required: true
   },
   totalAmount: {
     type: Number
+  },
+  icon: {
+    type: String
   }
 
 })
