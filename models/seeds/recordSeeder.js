@@ -1,25 +1,11 @@
-const mongoose = require('mongoose')
+const db = require('../../config/mongoose')
 const Record = require('../record')
-const recordlist = require('./record.json')
-const db = mongoose.connection
-
-
-mongoose.connect('mongodb://localhost/Expense', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true
-})
-
-
-db.on('error', () => {
-  console.log('error')
-})
+const recordList = require('./record.json')
 
 db.once('open', () => {
   console.log('mongodb connected!')
-  for (let i = 0; i < recordlist.length; i++) {
-    Record.create(recordlist[i])
+  for (let i = 0; i < recordList.length; i++) {
+    Record.create(recordList[i])
   }
   console.log('done')
 })

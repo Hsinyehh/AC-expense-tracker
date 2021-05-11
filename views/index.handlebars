@@ -11,4 +11,12 @@
     </select>
   </div>
 
+  <ul class="list-group">
+    {{#each records}}
+    <li class="list-group-item">
+      {{this.name}}
+    </li>
+    {{/each}}
+  </ul>
+
 </div>
