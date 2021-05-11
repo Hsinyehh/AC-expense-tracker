@@ -1,22 +1,45 @@
 <div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-8 ">
 
-  <div class="form-group">
-    <label for="exampleFormControlSelect1"></label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>家居物業</option>
-      <option>交通出行</option>
-      <option>休閒娛樂</option>
-      <option>餐飲食品</option>
-      <option>其他</option>
-    </select>
+      <form action="./sort" method="POST" class="my-3">
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>家居物業</option>
+          <option>交通出行</option>
+          <option>休閒娛樂</option>
+          <option>餐飲食品</option>
+          <option>其他</option>
+        </select>
+      </form>
+
+
+      <ul class="list-group my-5">
+        {{#each records}}
+        <li class="list-group-item">
+          <div class="row justify-content-between">
+            <div class="col-4">
+              {{this.name}}
+            </div>
+
+            <div class="col-2">
+              <div class="row justify-content-around">
+                <form action="./expense/{{this._id}}?_method=DELETE" method="POST">
+                  <button type="submit" class="btn">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </form>
+                <form action="./expense/{{this._id}}/edit" method="GET">
+                  <button type="submit" class="btn">
+                    <i class="fas fa-edit"></i>
+                  </button>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
-
-  <ul class="list-group">
-    {{#each records}}
-    <li class="list-group-item">
-      {{this.name}}
-    </li>
-    {{/each}}
-  </ul>
-
 </div>
