@@ -5,20 +5,13 @@
         <div class="card-body">
           <h4 class="card-title text-center"><i class="fa fa-plus" aria-hidden="true"></i> 請輸入你的支出</h4>
           <hr>
-          <form action="/expense" method="POST">
+          <form action="/expense/{{record._id}}/edit" method="POST">
 
 
             <div class="form-group row">
               <label for="name" class="col-sm-2 col-form-label">名稱</label>
               <div class=" col-sm-10">
-                <input type="text" class="form-control" name="name" placeholder="">
-              </div>
-            </div>
-
-            <div class="form-group row">
-              <label for="date" class="col-sm-2 col-form-label">日期</label>
-              <div class=" col-sm-10">
-                <input type="date" name="date" class="form-control" value="2021-02-22">
+                <input type="text" class="form-control" name="name" placeholder="" value="{{record.name}}">
               </div>
             </div>
 
@@ -27,11 +20,11 @@
               <div class=" col-sm-10">
                 <select name="category" class="form-control">
                   <option selected disabled>Select</option>
-                  <option value="家居物業">家居物業</option>
-                  <option value="交通出行">交通出行</option>
-                  <option value="休閒娛樂">休閒娛樂</option>
-                  <option value="餐飲食品">餐飲食品</option>
-                  <option value="其他">其他</option>
+                  <option>家居物業</option>
+                  <option>交通出行</option>
+                  <option>休閒娛樂</option>
+                  <option>餐飲食品</option>
+                  <option>其他</option>
                 </select>
               </div>
             </div>
@@ -39,13 +32,20 @@
             <div class="form-group row">
               <label for="rating" class="col-sm-2 col-form-label">金額</label>
               <div class=" col-sm-10">
-                <input type="number" class="form-control" name="amount" placeholder="">
+                <input type="number" class="form-control" name="amount" placeholder="" value="{{record.amount}}">
               </div>
             </div>
 
 
-            <div class="text-center mt-5">
-              <button type="submit" class="btn btn-dark">Submit</button>
+            <div class="form-group row">
+              <label for="date" class="col-sm-2 col-form-label">日期</label>
+              <div class=" col-sm-10">
+                <input type="date" name="date" class="form-control" value="{{record.date}}">
+              </div>
+            </div>
+
+            <div class=" text-center mt-5">
+              <button type="submit" class="btn btn-dark">Save</button>
             </div>
           </form>
 
