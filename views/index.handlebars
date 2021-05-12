@@ -23,7 +23,7 @@
 
             <div class="col-2">
               <div class="row justify-content-around">
-                <form action="./expense/{{this._id}}/delete" method="POST">
+                <form action="./expense/{{this._id}}?_method=DELETE" method="POST">
                   <button type="submit" class="btn">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                   </button>
@@ -42,7 +42,7 @@
       </ul>
 
       <div class="row justify-content-center mb-5">
-        <a href="./new" class="btn btn-dark">新增支出</a>
+        <a href="./expense/new" class="btn btn-dark">新增支出</a>
       </div>
 
     </div>
