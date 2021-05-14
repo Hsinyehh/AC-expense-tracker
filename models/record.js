@@ -14,7 +14,11 @@ const Expense = mongoose.model('Expense', expenseSchema)
 //Category Model
 const cateSchema = new Schema({
   category: { type: String, },
-  icon: { type: String }
+  icon: { type: String },
+  isSelected: {
+    type: Boolean,
+    default: false
+  }
 })
 
 const Category = mongoose.model('Category', cateSchema)

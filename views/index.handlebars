@@ -2,8 +2,9 @@
   <div class="row justify-content-center">
     <div class="col-sm-8 ">
 
-      <form action="./sort" method="POST" class="my-3">
-        <select class="form-control" id="exampleFormControlSelect1">
+      <form action="./filter" method="POST" class="my-3">
+        <select class="form-control" id="exampleFormControlSelect1" name="filter" onChange="javascript:submit()">
+          <option selected disabled>Select</option>
           <option>家居物業</option>
           <option>交通出行</option>
           <option>休閒娛樂</option>

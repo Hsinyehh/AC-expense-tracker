@@ -4,13 +4,14 @@ const Models = require('../../models/record')
 
 
 
-
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
+  console.log(req.body.filter)
   let totalAmount = 0
+
   Models.Expense.aggregate(
     [{
       $group: {
-        _id: "null",
+        _id: req.body.filter,
         total: {
           $sum: "$amount"
         }
@@ -19,14 +20,16 @@ router.get('/', (req, res) => {
     .then(result => totalAmount = result[0].total)
     .catch(error => console.error('error'))
 
-  Models.Expense.find()
+  return Models.Expense.find({
+
+    "category": { $regex: `${req.body.filter}` }
+
+  })
     .lean()
     .then(records => res.render('index', { records: records, totalAmount: totalAmount }))
     .catch(error => console.error('error'))
 
 })
-
-
 
 
 module.exports = router
