@@ -1,15 +1,34 @@
 const mongoose = require('mongoose')
-
 const Schema = mongoose.Schema
 
+//Expense Schema
 const expenseSchema = new Schema({
   name: { type: String, },
   category: { type: String, },
   date: { type: String, },
-  amount: { type: Number, },
-  totalAmount: { type: Number },
-  icon: { type: String }
-
+  amount: { type: Number, }
 })
 
-module.exports = mongoose.model('Record', expenseSchema)
+const Expense = mongoose.model('Expense', expenseSchema)
+
+//Category Model
+const cateSchema = new Schema({
+  category: { type: String, },
+  icon: { type: String }
+})
+
+const Category = mongoose.model('Category', cateSchema)
+
+//total Amount Model
+const totalAmouSchema = new Schema({
+  totalAmount: { type: Number },
+})
+
+const totalAmount = mongoose.model('totalAmount', totalAmouSchema)
+
+//Export
+module.exports = {
+  Expense: Expense,
+  Category: Category,
+  totalAmount: totalAmount
+}
