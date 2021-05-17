@@ -7,6 +7,7 @@ const Models = require('../../models/record')
 
 router.get('/', (req, res) => {
   let totalAmount = 0
+  const selectCategory = "All"
   Models.Expense.aggregate(
     [{
       $group: {
@@ -21,7 +22,10 @@ router.get('/', (req, res) => {
 
   Models.Expense.find()
     .lean()
-    .then(records => res.render('index', { records: records, totalAmount: totalAmount }))
+    .then(records =>
+      res.render('index', {
+        records: records, totalAmount: totalAmount, selectCategory: selectCategory
+      }))
     .catch(error => console.error('error'))
 
 })

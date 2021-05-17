@@ -5,28 +5,34 @@ const Models = require('../../models/record')
 
 
 router.post('/', (req, res) => {
+  //測試
   console.log(req.body.filter)
   let totalAmount = 0
+  const selectCategory = req.body.filter
 
   Models.Expense.aggregate(
-    [{
-      $group: {
-        _id: req.body.filter,
-        total: {
-          $sum: "$amount"
+    [
+      { $match: { category: selectCategory } },
+      {
+        $group: {
+          _id: "null",
+          total: {
+            $sum: "$amount"
+
+          }
         }
-      }
-    }])
-    .then(result => totalAmount = result[0].total)
+      }])
+    .then(result =>
+      totalAmount = result[0].total)
     .catch(error => console.error('error'))
 
   return Models.Expense.find({
 
-    "category": { $regex: `${req.body.filter}` }
+    "category": { $regex: `${selectCategory}` }
 
   })
     .lean()
-    .then(records => res.render('index', { records: records, totalAmount: totalAmount }))
+    .then(records => res.render('index', { records: records, totalAmount: totalAmount, selectCategory: selectCategory }))
     .catch(error => console.error('error'))
 
 })
