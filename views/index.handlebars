@@ -4,7 +4,7 @@
 
       <form action="./filter" method="POST" class="my-3">
         <select class="form-control" id="exampleFormControlSelect1" name="filter" onChange="javascript:submit()">
-          <option disabled {{#if (eq selectCategory "All" ) }} selected {{/if}}>All</option>
+          <option value="All" disabled {{#if (eq selectCategory "All" ) }} selected {{/if}}>全部支出</option>
           <option value="家居物業" {{#if (eq selectCategory "家居物業" ) }} selected {{/if}}>家居物業</option>
           <option value="交通出行" {{#if (eq selectCategory "交通出行" ) }} selected {{/if}}>交通出行</option>
           <option value="休閒娛樂" {{#if (eq selectCategory "休閒娛樂" ) }} selected {{/if}}>休閒娛樂</option>
@@ -16,7 +16,7 @@
 
       <h5>總金額</h5>
       <div class="row justify-content-center">
-        <h2>{{totalAmount}}</h2>
+        <h2 class="text-warning" style="font-size: 45px">$ {{totalAmount}}</h2>
       </div>
 
 
@@ -25,15 +25,15 @@
         <li class="list-group-item">
           <div class="row justify-content-between">
             <div class="col-1">
-              <i class="{{{getImage this.category../ categoryList}}}"></i>
+              <i class="{{{getImage this.category../ categoryList}}} fa-2x" style="color:Tomato"></i>
             </div>
             <div class="col-4">
-              {{this.name}}<br>
+              <span style="font-size: 20px">{{this.name}}</span><br>
               <small>{{this.date}}</small>
             </div>
 
-            <div class="col-4">
-              {{this.amount}}
+            <div class="col-4" style="font-size: 20px">
+              $ {{this.amount}}
             </div>
 
             <div class="col-2">
