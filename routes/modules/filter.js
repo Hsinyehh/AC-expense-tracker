@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const Models = require('../../models/record')
+const categoryList = require('../../models/seeds/category.json')
 
 
 
@@ -32,7 +33,7 @@ router.post('/', (req, res) => {
 
   })
     .lean()
-    .then(records => res.render('index', { records: records, totalAmount: totalAmount, selectCategory: selectCategory }))
+    .then(records => res.render('index', { records: records, totalAmount: totalAmount, selectCategory: selectCategory, categoryList: categoryList }))
     .catch(error => console.error('error'))
 
 })
