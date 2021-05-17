@@ -24,6 +24,9 @@
         {{#each records}}
         <li class="list-group-item">
           <div class="row justify-content-between">
+            <div class="col-1">
+              <i class="{{{getImage this.category../ categoryList}}}"></i>
+            </div>
             <div class="col-4">
               {{this.name}}<br>
               <small>{{this.date}}</small>

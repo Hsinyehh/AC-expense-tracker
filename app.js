@@ -13,7 +13,10 @@ const port = 3000
 
 app.engine('handlebars', exphbs({
   defaultLayout: 'main', helpers: {
-    eq: function (v1, v2) { return (v1 === v2) }
+    eq: function (v1, v2) { return (v1 === v2) },
+    getImage: function (category, categoryImage) {
+      return categoryImage[category]
+    }
   }
 })
 )
