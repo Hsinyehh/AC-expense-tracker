@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Models = require('../../models/record')
+const Record = require('../../models/record')
 const categoryList = require('../../models/seeds/category.json')
 
 
@@ -9,7 +9,7 @@ const categoryList = require('../../models/seeds/category.json')
 router.get('/', (req, res) => {
   let totalAmount = 0
   const selectCategory = "All"
-  Models.Expense.aggregate(
+  Record.aggregate(
     [{
       $group: {
         _id: "null",
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
     .then(result => totalAmount = result[0].total)
     .catch(error => console.error('error'))
 
-  Models.Expense.find()
+  Record.find()
     .lean()
     .then(records =>
       res.render('index', {
