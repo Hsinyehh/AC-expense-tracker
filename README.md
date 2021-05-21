@@ -35,4 +35,12 @@
 
 * 啟動完成請至 http://localhost:3000/ 
 
+## 網站示意
+* 主頁
 ![GITHUB](https://img.onl/6nXcDF)
+
+* 新增支出
+![GITHUB](https://img.onl/nF5w7k)
+
+* 根據支出類別篩選支出
+![GITHUB](https://img.onl/mxezl)
