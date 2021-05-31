@@ -17,8 +17,13 @@
     <!-- Navbar content -->
 
     <a class="navbar-brand" href="/">
-      <p class="font-weight-bold">家庭記帳本</p>
+      <p class="font-weight-bold">{{#if isAuthenticated}}{{user.name}}'s {{/if}}Expense Tracker</p>
     </a>
+    {{#if isAuthenticated}}
+    <a href="/users/logout" class="btn btn-outline-light">Logout</a>
+    {{else}}
+    <a href="/users/login" class="btn btn-outline-light">Login</a>
+    {{/if}}
 
   </nav>
 
