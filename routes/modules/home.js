@@ -8,20 +8,25 @@ const categoryList = require('../../models/seeds/category.json')
 
 router.get('/', (req, res) => {
   let totalAmount = 0
+  const userId = req.user._id
   const selectCategory = "All"
   Record.aggregate(
-    [{
-      $group: {
-        _id: "null",
-        total: {
-          $sum: "$amount"
+    [
+
+      { $match: { userId: userId } },
+      {
+        $group: {
+          _id: "null",
+          total: {
+            $sum: "$amount"
+          }
         }
       }
-    }])
+    ])
     .then(result => totalAmount = result[0].total)
     .catch(error => console.error('error'))
 
-  Record.find()
+  Record.find({ userId })
     .lean()
     .then(records =>
       res.render('index', {

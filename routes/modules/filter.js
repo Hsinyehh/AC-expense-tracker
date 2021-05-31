@@ -8,13 +8,14 @@ const categoryList = require('../../models/seeds/category.json')
 router.post('/', (req, res) => {
   let totalAmount = 0
   const selectCategory = req.body.filter
+  const userId = req.user._id
   if (selectCategory == "All") {
     res.redirect('/')
   }
   else {
     Record.aggregate(
       [
-        { $match: { category: selectCategory } },
+        { $match: { category: selectCategory, userId: userId } },
         {
           $group: {
             _id: "null",
@@ -30,7 +31,7 @@ router.post('/', (req, res) => {
 
     return Record.find({
 
-      "category": { $regex: `${selectCategory}` }
+      "category": { $regex: `${selectCategory}` }, userId
 
     })
       .lean()
