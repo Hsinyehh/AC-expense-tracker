@@ -24,7 +24,7 @@ router.get('/', (req, res) => {
       }
     ])
     .then(result => totalAmount = result[0].total)
-    .catch(error => console.error('error'))
+    .catch(error => console.error('home aggregate error'))
 
   Record.find({ userId })
     .lean()
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
       res.render('index', {
         records: records, totalAmount: totalAmount, selectCategory: selectCategory, categoryList: categoryList
       }))
-    .catch(error => console.error('error'))
+    .catch(error => console.error('home find error'))
 
 })
 

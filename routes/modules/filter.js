@@ -27,7 +27,7 @@ router.post('/', (req, res) => {
         }])
       .then(result =>
         totalAmount = result[0].total)
-      .catch(error => console.error('error'))
+      .catch(error => console.error('filter aggregate error'))
 
     return Record.find({
 
@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
     })
       .lean()
       .then(records => res.render('index', { records: records, totalAmount: totalAmount, selectCategory: selectCategory, categoryList: categoryList }))
-      .catch(error => console.error('error'))
+      .catch(error => console.error('filter find error'))
   }
 })
 
