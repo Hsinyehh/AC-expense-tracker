@@ -1,6 +1,10 @@
 const mongoose = require('mongoose')
 const db = mongoose.connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Expense'
+
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config()
+}
+const MONGODB_URI = process.env.MONGODB_URI
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
