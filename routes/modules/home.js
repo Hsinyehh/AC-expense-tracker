@@ -6,7 +6,7 @@ const categoryList = require('../../models/seeds/category.json')
 
 
 
-router.get('/', (req, res) => {
+/*router.get('/', (req, res) => {
   let totalAmount = 0
   const userId = req.user._id
   const selectCategory = "All"
@@ -25,6 +25,40 @@ router.get('/', (req, res) => {
     ])
     .then(result => totalAmount = result[0].total)
     .catch(error => console.error('home aggregate error'))
+
+Record.find({ userId })
+  .lean()
+  .then(records =>
+    res.render('index', {
+      records: records, totalAmount: totalAmount, selectCategory: selectCategory, categoryList: categoryList
+    }))
+  .catch(error => console.error('home find error'))
+
+})*/
+
+router.get('/', async (req, res) => {
+
+  const userId = req.user._id
+  const selectCategory = "All"
+  let data
+
+  try {
+    data = await Record.aggregate(
+      [
+
+        { $match: { userId: userId } },
+        {
+          $group: {
+            _id: "null",
+            total: {
+              $sum: "$amount"
+            }
+          }
+        }
+      ])
+  }
+  catch (error) { console.error('home aggregate error') }
+  let totalAmount = data[0].total
 
   Record.find({ userId })
     .lean()
