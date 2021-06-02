@@ -32,10 +32,7 @@ router.put('/:id', (req, res) => {
   const userId = req.user._id
   return Record.findOne({ _id, userId })
     .then(record => {
-      record.name = req.body.name
-      record.date = req.body.date
-      record.category = req.body.category
-      record.amount = req.body.amount
+      record = Object.assign(record, req.body)
       return record.save()
     })
     .then(() => { res.redirect('/') })
