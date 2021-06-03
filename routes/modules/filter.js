@@ -34,7 +34,7 @@ router.post('/', async (req, res) => {
 
     }
     catch (error) { console.error('filter aggregate error') }
-    //如果篩選到資料，就賦值給totalAmount；沒篩選到totalAmount=0
+    //如果篩選到資料，就賦值給totalAmount；沒篩選到資料，totalAmount=0
     if (!(data == 0)) {
       totalAmount = data[0].total
     }

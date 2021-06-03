@@ -9,6 +9,7 @@ router.get('/', async (req, res) => {
 
   const userId = req.user._id
   const selectCategory = "All"
+  const selectMonth = "All"
   let data
   let totalAmount = 0
 
@@ -29,13 +30,15 @@ router.get('/', async (req, res) => {
 
   }
   catch (error) { console.error('home aggregate error') }
-  totalAmount = data[0].total
+  if (!(data == 0)) {
+    totalAmount = data[0].total
+  }
 
   Record.find({ userId })
     .lean()
     .then(records =>
       res.render('index', {
-        records: records, totalAmount: totalAmount, selectCategory: selectCategory, categoryList: categoryList
+        records: records, totalAmount: totalAmount, selectCategory: selectCategory, selectMonth: selectMonth, categoryList: categoryList
       }))
     .catch(error => console.error('home find error'))
 

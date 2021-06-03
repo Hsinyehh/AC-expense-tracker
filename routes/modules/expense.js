@@ -10,6 +10,7 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const userId = req.user._id
+  //取出日期字串的月份，再把月份儲存在資料庫
   const month = req.body.date.slice(5, 7)
   return Record.create({ ...req.body, month, userId })
     .then(() => { res.redirect('/') })
@@ -34,6 +35,7 @@ router.put('/:id', (req, res) => {
   return Record.findOne({ _id, userId })
     .then(record => {
       record = Object.assign(record, req.body)
+      //取出日期字串的月份，再把月份儲存在資料庫
       record.month = req.body.date.slice(5, 7)
       return record.save()
     })
