@@ -1,14 +1,17 @@
 # AC-expense-tracker
 
+## Heroku部署
+* 網站: https://stormy-taiga-94819.herokuapp.com/
+* 測試帳號: user1@example.com
+* 測試密碼: 12345678
 
 ## 網站功能描述
 * 記帳本 
-	* 在首頁一次瀏覽所有支出的清單
-  * 在首頁看到所有支出清單的總金額
-  * 新增一筆支出
-  * 編輯支出的所有屬性 (一次只能編輯一筆)
-  * 刪除任何一筆支出 (一次只能刪除一筆)
-  * 在首頁可以根據支出「類別」篩選支出；總金額的計算只會包括被篩選出來的支出總和。
+  * 在首頁瀏覽所有支出的清單及總金額
+  * 新增、編輯、刪除一筆支出
+  * 在首頁可以根據支出「類別」及「月分」篩選支出；總金額的計算只會包括被篩選出來的支出總和
+  * 使用者認證功能 (註冊及登入)
+  * Facebook使用者認證功能
 
 ## 環境建置與需求 
 * Node js 14.16.1 - 開發環境 
@@ -31,16 +34,19 @@
  `npm run dev`
 
 * 下載種子資料
- `node models/seeds/recordSeeder.js`
+ `npm run seed`
 
 * 啟動完成請至 http://localhost:3000/ 
 
 ## 網站示意
 * 主頁
-![GITHUB](https://img.onl/6nXcDF)
+![GITHUB](https://img.onl/GiqXgo)
 
 * 新增支出
-![GITHUB](https://img.onl/nF5w7k)
+![GITHUB](https://img.onl/9BtEIW)
 
-* 根據支出類別篩選支出
-![GITHUB](https://img.onl/mxezl)
+* 登入
+![GITHUB](https://img.onl/nGuK3T)
+
+* 註冊
+![GITHUB](https://img.onl/Dwa4wk)
