@@ -6,6 +6,7 @@ const recordSchema = new Schema({
   name: { type: String, },
   category: { type: String, },
   date: { type: String, },
+  month: { type: String, },
   amount: { type: Number, },
   merchant: { type: String, },
   userId: {

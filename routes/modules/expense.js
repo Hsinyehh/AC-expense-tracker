@@ -10,7 +10,8 @@ router.get('/new', (req, res) => {
 
 router.post('/', (req, res) => {
   const userId = req.user._id
-  return Record.create({ ...req.body, userId })
+  const month = req.body.date.slice(5, 7)
+  return Record.create({ ...req.body, month, userId })
     .then(() => { res.redirect('/') })
     .catch(error => console.log('error'))
 
@@ -33,6 +34,7 @@ router.put('/:id', (req, res) => {
   return Record.findOne({ _id, userId })
     .then(record => {
       record = Object.assign(record, req.body)
+      record.month = req.body.date.slice(5, 7)
       return record.save()
     })
     .then(() => { res.redirect('/') })
